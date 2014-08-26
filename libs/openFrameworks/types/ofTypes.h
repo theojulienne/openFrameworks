@@ -3,7 +3,11 @@
 #include "ofConstants.h"
 #include "ofColor.h"
 
-#if (_MSC_VER) || defined(TARGET_EMSCRIPTEN) || defined(TARGET_LINUX)
+#if (defined(__clang__) && __cplusplus >= 201103L)
+#define TARGET_CLANG_CXX11
+#endif
+
+#if (_MSC_VER) || defined(TARGET_EMSCRIPTEN) || defined(TARGET_LINUX) || defined(TARGET_CLANG_CXX11)
 #include <memory>
 #else
 #include <tr1/memory>
@@ -178,7 +182,7 @@ public:
 	template<typename Tp1>
 	ofPtr(const ofPtr<Tp1>& __r, std::_Dynamic_tag)
 	: std::shared_ptr<T>(__r, std:::_Dynamic_tag()) { }
-#elif !defined(TARGET_EMSCRIPTEN) && !defined(TARGET_LINUX)
+#elif !defined(TARGET_EMSCRIPTEN) && !defined(TARGET_LINUX) && !defined(TARGET_CLANG_CXX11)
 	template<typename Tp1>
 	ofPtr(const ofPtr<Tp1>& __r, std::__dynamic_cast_tag)
 	: std::shared_ptr<T>(__r, std::__dynamic_cast_tag()) { }
@@ -200,7 +204,7 @@ template<typename _Tp, typename _Tp1>
 ofPtr<_Tp>
 	dynamic_pointer_cast(const ofPtr<_Tp1>& __r)
 { return ofPtr<_Tp>(__r, std::_Dynamic_tag()); }
-#elif !defined(TARGET_EMSCRIPTEN) && !defined(TARGET_LINUX)
+#elif !defined(TARGET_EMSCRIPTEN) && !defined(TARGET_LINUX) && !defined(TARGET_CLANG_CXX11)
 template<typename _Tp, typename _Tp1>
 ofPtr<_Tp>
 	dynamic_pointer_cast(const ofPtr<_Tp1>& __r)
