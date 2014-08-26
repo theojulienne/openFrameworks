@@ -10,6 +10,8 @@
 #include "ofNoise.h"
 #include "ofPolyline.h"
 
+#include <unistd.h>
+
 //--------------------------------------------------
 int ofNextPow2(int a){
 	// from nehe.gamedev.net lesson 43

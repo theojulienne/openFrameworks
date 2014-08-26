@@ -111,7 +111,7 @@ void ofxiOSMapKit::_setRegion(CLLocationCoordinate2D center, MKCoordinateSpan sp
 void ofxiOSMapKit::setType(ofxiOSMapKitType type) {
     if(isOpen()) {
         ofLogVerbose("ofxiOSMapKit") << "setType(): setting map type: " << (int) type;
-        mapView.mapType = type;
+        mapView.mapType = (MKMapType)type;
     }
 }
 

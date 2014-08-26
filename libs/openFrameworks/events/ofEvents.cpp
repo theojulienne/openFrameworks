@@ -5,6 +5,7 @@
 #include "ofGraphics.h"
 #include "ofAppBaseWindow.h"
 #include <set>
+#include <unistd.h>
 
 static const double MICROS_TO_SEC = .000001;
 static const double MICROS_TO_MILLIS = .001;

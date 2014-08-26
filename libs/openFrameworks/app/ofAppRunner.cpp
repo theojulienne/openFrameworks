@@ -18,6 +18,8 @@
 #include "ofTrueTypeFont.h"
 #include "ofURLFileLoader.h"
 
+#include <unistd.h>
+
 
 // TODO: closing seems wonky.
 // adding this for vc2010 compile: error C3861: 'closeQuicktime': identifier not found
