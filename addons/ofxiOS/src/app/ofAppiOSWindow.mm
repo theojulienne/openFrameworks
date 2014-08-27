@@ -94,7 +94,7 @@ void ofAppiOSWindow::startAppWithDelegate(string appDelegateClassName) {
     
     @autoreleasepool {
         cout << "trying to launch app delegate " << appDelegateClassName << endl;
-        UIApplicationMain(nil, nil, nil, [NSString stringWithUTF8String:appDelegateClassName.c_str()]);
+        UIApplicationMain(0, nil, nil, [NSString stringWithUTF8String:appDelegateClassName.c_str()]);
     }
 }
 
